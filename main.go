@@ -33,11 +33,13 @@ func run() int {
 		cfg.XCPretty = false
 	}
 
-	// result, err := xcodebuildBuilder.Run(cfg)
-	// if err != nil {
-	// 	logger.Errorf("Run: %s", err)
-	// 	exitCode = 1
-	// }
+	result, err := xcodebuildBuilder.Run(cfg)
+	if err != nil {
+		logger.Errorf("Run: %s", err)
+		exitCode = 1
+	}
+
+	// result := RunOut{}
 
 	if err := xcodebuildBuilder.ExportOutputs(step.ExportOpts{
 		OutputDir: cfg.OutputDir,
